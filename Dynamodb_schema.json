@@ -1,0 +1,85 @@
+{
+    "TableName": "table_name",
+    "KeySchema": [
+        {
+            "AttributeName": "hash_key_attribute_name",
+            "KeyType": "HASH"
+        },
+        {
+            "AttributeName": "range_key_attribute_name",
+            "KeyType": "RANGE"
+        }
+    ],
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "hash_key_attribute_name",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "range_key_attribute_name",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "index_hash_key_attribute_name_1",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "index_range_key_attribute_name_1",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "index_range_key_attribute_name_2",
+            "AttributeType": "S"
+        }
+    ],
+    "ProvisionedThroughput": {
+        "ReadCapacityUnits": 1,
+        "WriteCapacityUnits": 1
+    },
+    "GlobalSecondaryIndexes": [
+        {
+            "IndexName": "index_name_1",
+            "KeySchema": [
+                {
+                    "AttributeName": "index_hash_key_attribute_name_1",
+                    "KeyType": "HASH"
+                },
+                {
+                    "AttributeName": "index_range_key_attribute_name_1",
+                    "KeyType": "RANGE"
+                }
+            ],
+            "Projection": {
+                "ProjectionType": "INCLUDE",
+                "NonKeyAttributes": [
+                    "attribute_name_1"
+                ]
+            },
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+            }
+        }
+    ],
+    "LocalSecondaryIndexes": [
+        {
+            "IndexName": "index_name_2",
+            "KeySchema": [
+                {
+                    "AttributeName": "hash_key_attribute_name",
+                    "KeyType": "HASH"
+                },
+                {
+                    "AttributeName": "index_range_key_attribute_name_2",
+                    "KeyType": "RANGE"
+                }
+            ],
+            "Projection": {
+                "ProjectionType": "INCLUDE",
+                "NonKeyAttributes": [
+                    "attribute_name_1"
+                ]
+            }
+        }
+    ]
+}
